@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Table from "@/components/Table";
 import Select from "@/components/Select";
@@ -60,36 +60,40 @@ const BranchesPage: React.FC = () => {
         );
 
     return (
-        <div className="bg-purple-900 min-h-screen flex items-center">
-            <div className="p-8 max-w-6xl mx-auto bg-white rounded-lg shadow border border-black/10 ">
-                <div className="flex justify-between items-center mb-6">
-                    <h1 className="text-3xl font-bold text-gray-800">
-                        POS Branches
-                    </h1>
-                    <Button
-                        onClick={handleBack}
-                        styles="bg-gray-500 hover:bg-gray-600 "
-                    >
-                        Back to Selection
-                    </Button>
-                </div>
-                <div className="mb-6 max-w-md">
-                    <Select
-                        label="Switch Merchant"
-                        options={merchants.map((m) => ({
-                            value: m.id,
-                            label: m.name,
-                        }))}
-                        value={selectedMerchant}
-                        onChange={(e) => setSelectedMerchant(e.target.value)}
-                        allowDefault={false}
-                    />
-                </div>
+        <Suspense fallback={<> Fallback page </>}>
+            <div className="bg-purple-900 min-h-screen flex items-center">
+                <div className="p-8 max-w-6xl mx-auto bg-white rounded-lg shadow border border-black/10 ">
+                    <div className="flex justify-between items-center mb-6">
+                        <h1 className="text-3xl font-bold text-gray-800">
+                            POS Branches
+                        </h1>
+                        <Button
+                            onClick={handleBack}
+                            styles="bg-gray-500 hover:bg-gray-600 "
+                        >
+                            Back to Selection
+                        </Button>
+                    </div>
+                    <div className="mb-6 max-w-md">
+                        <Select
+                            label="Switch Merchant"
+                            options={merchants.map((m) => ({
+                                value: m.id,
+                                label: m.name,
+                            }))}
+                            value={selectedMerchant}
+                            onChange={(e) =>
+                                setSelectedMerchant(e.target.value)
+                            }
+                            allowDefault={false}
+                        />
+                    </div>
 
-                {loading && <LoadingSkleton />}
-                {!loading && <Table data={branches} />}
+                    {loading && <LoadingSkleton />}
+                    {!loading && <Table data={branches} />}
+                </div>
             </div>
-        </div>
+        </Suspense>
     );
 };
 
