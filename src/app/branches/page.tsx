@@ -82,6 +82,7 @@ const BranchesPage: React.FC = () => {
                         }))}
                         value={selectedMerchant}
                         onChange={(e) => setSelectedMerchant(e.target.value)}
+                        allowDefault={false}
                     />
                 </div>
 
