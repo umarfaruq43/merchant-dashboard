@@ -2,7 +2,7 @@
 
 ## Setup Instructions
 
-1. Clone the repo: `git clone <your-repo-url>`
+1. Clone the repo: `git clone git@github.com:umarfaruq43/merchant-dashboard.git`
 2. Install dependencies: `npm install`
 3. Run the app: `npm run dev`
 4. Open http://localhost:3000
