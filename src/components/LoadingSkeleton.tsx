@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoadingSkleton = () => {
+const LoadingSkeleton = () => {
     return (
         <div className="overflow-x-auto shadow-md rounded-lg w-250">
             <table className="min-w-full bg-white border border-gray-200">
@@ -58,4 +58,4 @@ const LoadingSkleton = () => {
     );
 };
 
-export default LoadingSkleton;
+export default LoadingSkeleton;
